@@ -27,11 +27,14 @@ class UserCreateView(FormView):
 
     def form_valid(self, form, *args, **kwargs):
         messages.add_message(self.request, messages.SUCCESS, "Created new user")
-        user, created = UserService().create_user(
+        service = UserService()
+        user, created = service.create_user(
             form.cleaned_data['username'],
             form.cleaned_data['email'],
             first_name=form.cleaned_data['first_name'],
             last_name=form.cleaned_data['last_name'])
+        if created:
+            service.send_user_password_invite(user)
 
         return HttpResponseRedirect(self.get_success_url())
 

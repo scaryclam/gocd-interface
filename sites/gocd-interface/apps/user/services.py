@@ -47,6 +47,15 @@ class UserService(object):
             link, email_address, "Password Reset", "no-reply@example.com",
             "emails/password-reset.html", "emails/password-reset.txt")
 
+    def send_user_password_invite(self, user):
+        registration_service = RegistrationService()
+        email_address = user.email
+        link = registration_service.create_password_link(user, is_invite=True)
+        registration_service.send_password_link(
+            link, email_address, "You have been created on GOCD Interface",
+            "no-reply@example.com", "emails/password-invite.html",
+            "emails/password-invite.txt")
+
     def does_passwordlink_code_exist(self, unique_code):
         """ Returns boolean value, depending on whether or not the
             code exists
@@ -91,9 +100,10 @@ class UserService(object):
 
 
 class RegistrationService(object):
-    def create_password_link(self, user):
+    def create_password_link(self, user, is_invite=False):
         code = str(uuid.uuid4())
-        return models.PasswordLink.objects.create(user=user, code=code)
+        return models.PasswordLink.objects.create(
+            user=user, code=code, is_invite=is_invite)
 
     def send_password_link(self, link, recipient, subject, sender, email_template_html, email_template_text):
         html_template = loader.get_template(email_template_html)
