@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% load staticfiles %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-header">
+            {% block page-header %}
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <!-- /.row -->
+
+    <div class="row">
+        <div class="col-sm-12">
+        {% block content %}
+        <div class="faux_h1 text404">404</div>
+        <div class="text404">
+            <h3>Some sneaky pirate stole the page! But don't worry, we've sent our ninja to look for it.</h3>
+            <h4>In the meantime, perhaps you'd like to <a href="javascript:history.back()">go back</a> to where you were or get back to the <a href="/">home page</a></h4>
+        </div>
+        {% endblock content %}
+        </div>
+{% endblock container %}

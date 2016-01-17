@@ -9,10 +9,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
-build/
 develop-eggs/
-dist/
-downloads/
 eggs/
 .eggs/
 lib/
@@ -57,3 +54,6 @@ docs/_build/
 
 # PyBuilder
 target/
+
+Vagrantfile
+.vagrant

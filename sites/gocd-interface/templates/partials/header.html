@@ -1,0 +1,27 @@
+<header class="header clearfix">
+	{% if user.is_authenticated %}
+		<nav class="nav nav--sub">
+			<a href="{% url "logout" %}">Logout</a>
+		</nav>
+	{% endif %}
+
+	<div class="row background-black text-white pv ph">
+		<div class="col-xs-4">    
+			<a href="#" class="nav-button nav-button--menu text-white" data-show="#mainnav"><i class="fa fa-reorder"></i></a>
+		</div>
+		<div class="col-xs-4 text-center">
+			<a href="{% block homepagelink %}/{% endblock %}" class="mainlogo link--special">
+			GOCD Interface
+    		</a>
+		</div>
+	</div> 
+
+	<nav class="nav background-black text-white is-hidden mt {% block navigation-class %}{% endblock %}" id="mainnav">
+		<div class="container">
+			<div class="nav__wrapper">
+			<a href="{% url "home" %}" class="nav__item text-white icon-link text-upper"><i class="fa fa-home"></i><br>Home</a>
+			</div>
+		</div>
+	</nav> 
+
+</header>
