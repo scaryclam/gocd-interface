@@ -8,4 +8,3 @@ urlpatterns = patterns('',
     url(r'^$', login_required(views.UserListView.as_view()), name="user-list"),
     url(r'^create/', login_required(views.UserCreateView.as_view()), name="create"),
 )
-

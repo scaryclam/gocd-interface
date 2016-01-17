@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^password-set/(?P<unique_code>[a-zA-Z0-9\-]+)/', views.PasswordResetView.as_view(), name="set-password"),
     url(r'^gocd/$', views.HomePageView.as_view(), name='home'),
     url(r'^gocd/user/', include('apps.user.urls', namespace='user')),
+    url(r'^gocd/project/', include('apps.project.urls', namespace='project')),
 ]
 
 

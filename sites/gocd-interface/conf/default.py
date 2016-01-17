@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django_extensions',
     'apps.user',
+    'apps.project',
 )
 
 MIDDLEWARE_CLASSES = (
