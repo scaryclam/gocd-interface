@@ -74,3 +74,9 @@ class PasswordLink(models.Model):  # pragma: no cover
     is_invite = models.BooleanField(default=False)
     created_dt = models.DateTimeField(auto_now_add=True)
     modified_dt = models.DateTimeField(auto_now=True)
+
+
+class Role(models.Model):  # pragma: no cover
+    name = models.CharField(max_length=255)
+    role_type = models.CharField(max_length=255, unique=True)
+    users = models.ManyToManyField('user.User', related_name="roles")

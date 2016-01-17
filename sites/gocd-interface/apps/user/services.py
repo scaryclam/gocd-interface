@@ -18,6 +18,8 @@ class UserService(object):
         except models.User.DoesNotExist:
             user = models.User.objects.create(username=username,
                                               email=email,
+                                              first_name=first_name,
+                                              last_name=last_name,
                                               is_staff=is_staff,
                                               is_superuser=is_superuser)
             created = True
@@ -83,6 +85,9 @@ class UserService(object):
         link = self.get_passwordlink_by_code(unique_code)
         link.used = timezone.now()
         link.save()
+
+    def get_all_users(self):
+        return models.User.objects.all().order_by('username')
 
 
 class RegistrationService(object):

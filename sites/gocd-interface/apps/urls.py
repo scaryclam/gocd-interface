@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^forgotten-password/$', views.ForgottenPasswordView.as_view(), name="forgotten-password"),
     url(r'^reset-forgotten-password/(?P<unique_code>[a-zA-Z0-9\-]+)/', views.PasswordResetView.as_view(), name="reset-forgotten-password"),
     url(r'^gocd/$', views.HomePageView.as_view(), name='home'),
+    url(r'^gocd/user/', include('apps.user.urls', namespace='user')),
 ]
 
 

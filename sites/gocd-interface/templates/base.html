@@ -5,9 +5,9 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{ SITE_NAME }} {% block title %}{% endblock title %}</title>
+        <title>{% block title %}{% endblock title %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" lang="en" content="BlogSpace">
+        <meta name="description" lang="en" content="GOCD interface">
         <meta name="robots" content="index, follow">
 
         <!-- icons -->
@@ -26,19 +26,8 @@
             <script src="assets/js/html5.js"></script>
             <script src="assets/js/respond.min.js"></script>
         <![endif]-->
-        <link href="http://{{ request.META.HTTP_HOST }}/feed/" rel="alternate" type="application/rss+xml" title="scaryclam.co.uk" />
         {% block extra_head %}
         {% endblock %}
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-67913502-1', 'auto');
-            ga('send', 'pageview');
-        </script>
-
     </head>
     <body>
     {% block layout %}
