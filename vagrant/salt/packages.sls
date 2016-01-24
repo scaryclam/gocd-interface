@@ -41,6 +41,7 @@ core:
       - memcached
       - oracle-java8-installer
       - unzip
+      - git
     - refresh: True
 
 /tmp/go-server-15.2.0-2248.deb:

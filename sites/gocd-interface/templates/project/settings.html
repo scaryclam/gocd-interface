@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block page-header %}
+<h1>Settings</h1>
+{% endblock %}
+
+{% block content %}
+<h2>Project Settings</h2>
+<form method="post" action="." class="form">
+    <fieldset>
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="{% if project_form.name.errors %}error{% endif %}">
+                <input type="text" name="{{ project_form.name.name }}" id="id_{{ project_form.name.name }}" class="form-control" placeholder="Name"{% if project_form.name.value %} value="{{ project_form.name.value }}"{% endif %}></input>
+                <div class="errormsg">{% if project_form.name.errors %}{{ project_form.name.errors }}{% endif %}</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="{% if project_form.description.errors %}error{% endif %}">
+                <textarea name="{{ project_form.description.name }}" id="id_{{ project_form.description.name }}" class="form-control" placeholder="Description"{% if project_form.description.value %} value="{{ project_form.description.value }}"{% endif %}></textarea>
+                <div class="errormsg">{% if project_form.description.errors %}{{ project_form.description.errors }}{% endif %}</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="{% if project_form.visible_to_all.errors %}error{% endif %}">
+                <label for="id_visible_to_all">Visible to all</label>
+                <input type="checkbox" name="{{ project_form.visible_to_all.name }}" id="id_{{ project_form.visible_to_all.name }}" class="form-control" {% if project_form.visible_to_all.value %} checked="{{ project_form.visible_to_all.value }}"{% endif %}></input>
+                <div class="errormsg">{% if project_form.visible_to_all.errors %}{{ project_form.visible_to_all.errors }}{% endif %}</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="{% if project_form.gocd_server_host.errors %}error{% endif %}">
+                <input type="text" name="{{ project_form.gocd_server_host.name }}" id="id_{{ project_form.gocd_server_host.name }}" class="form-control" placeholder="GOCD Host"{% if project_form.gocd_server_host.value %} value="{{ project_form.gocd_server_host.value }}"{% endif %}></input>
+                <div class="errormsg">{% if project_form.gocd_server_host.errors %}{{ project_form.gocd_server_host.errors }}{% endif %}</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="{% if project_form.gocd_server_port.errors %}error{% endif %}">
+                <input type="text" name="{{ project_form.gocd_server_port.name }}" id="id_{{ project_form.gocd_server_port.name }}" class="form-control" placeholder="GOCD Port"{% if project_form.gocd_server_port.value %} value="{{ project_form.gocd_server_port.value }}"{% endif %}></input>
+                <div class="errormsg">{% if project_form.gocd_server_port.errors %}{{ project_form.gocd_server_port.errors }}{% endif %}</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="{% if project_form.gocd_server_username.errors %}error{% endif %}">
+                <input type="text" name="{{ project_form.gocd_server_username.name }}" id="id_{{ project_form.gocd_server_username.name }}" class="form-control" placeholder="GOCD Username"{% if project_form.gocd_server_username.value %} value="{{ project_form.gocd_server_username.value }}"{% endif %}></input>
+                <div class="errormsg">{% if project_form.gocd_server_username.errors %}{{ project_form.gocd_server_username.errors }}{% endif %}</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="{% if project_form.gocd_server_password.errors %}error{% endif %}">
+                <input type="password" name="{{ project_form.gocd_server_password.name }}" id="id_{{ project_form.gocd_server_password.name }}" class="form-control" placeholder="GOCD Password"{% if project_form.gocd_server_password.value %} autocomplete="off" value="{{ project_form.gocd_server_password.value }}"{% endif %}></input>
+                <div class="errormsg">{% if project_form.gocd_server_password.errors %}{{ project_form.gocd_server_password.errors }}{% endif %}</div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button type="submit" class="btn">Update</button>
+        </div>
+    </fieldset>
+</form>
+<h2>Project Members</h2>
+{% endblock content %}

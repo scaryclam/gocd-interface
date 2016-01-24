@@ -11,3 +11,18 @@ class ProjectService(object):
                                                 description=description,
                                                 visible_to_all=visible_to_all)
         return project
+
+    def get_project_by_pk(self, project_pk):
+        return models.Project.objects.get(pk=project_pk)
+
+    def get_groups_for_project(self, project, pipeline_groups):
+        project_groups = []
+        for group in pipeline_groups:
+            try:
+                project_group = project.pipelinegroup_set.get(
+                    gocd_name=group['name'])
+                project_groups.append(project_group)
+            except models.PipelineGroup.DoesNotExist:
+                continue
+
+        return project_groups

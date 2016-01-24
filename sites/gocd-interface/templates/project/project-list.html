@@ -12,11 +12,13 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th></th>
         </tr>
     </thead>
     {% for project in projects %}
         <tr>
-            <td>{{ project.name }}</td>
+            <td><a href="{% url 'project:detail' pk=project.pk %}">{{ project.name }}</a></td>
+            <td><a href="{% url 'project:settings' pk=project.pk %}"><span class="glyphicon glyphicon-cog pull-right"></span></a></td>
         </tr>
     {% endfor %}
     </table>

@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block page-header %}
+<h1>{{ project.name }}</h1>
+{% endblock %}
+
+{% block content %}
+<div>GOCD Connection is: <strong>{% if gocd_connection %}OK{% else %}{{ gocd_reason }}{% endif %}</strong></div>
+{% endblock content %}
